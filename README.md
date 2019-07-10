@@ -21,7 +21,7 @@ Users can see a leaderboard updates in real-time as users update their voter sta
 
 
 ## Getting Started
-[App Link](placeholder)
+[App Link](https://civicdutyapp.herokuapp.com/)
 
 
 ### Instructions:
