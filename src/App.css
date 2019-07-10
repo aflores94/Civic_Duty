@@ -21,6 +21,15 @@
   text-align: center;
 }
 
+.App-footer {
+    background-color: #222;
+    height: 50px;
+    padding: 20px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
 .App-link {
   color: #61dafb;
 }

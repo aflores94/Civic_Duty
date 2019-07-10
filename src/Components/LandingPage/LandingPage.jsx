@@ -3,7 +3,10 @@ import React from 'react';
 
 const LandingPage = (props) => (
     <div>
-        Logo
+        <h1>Civic Duty</h1>
+        <div>
+            Logo
+        </div>
     </div>
 );
 
