@@ -1,3 +1,4 @@
+//jshint esversion:8
 import tokenService from './tokenService';
 
 const BASE_URL = '/api/users/';

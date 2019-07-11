@@ -1,4 +1,4 @@
-//jshint esversion:6
+//jshint esversion:8
 import React from 'react';
 import NavBar from '../../Components/NavBar/NavBar';
 import Elections from '../../Components/Elections/Elections';

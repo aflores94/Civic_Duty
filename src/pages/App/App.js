@@ -1,5 +1,4 @@
-//jshint esversion:6
-
+//jshint esversion:8
 import React, {Component} from 'react';
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
