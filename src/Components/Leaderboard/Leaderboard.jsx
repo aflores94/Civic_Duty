@@ -2,7 +2,7 @@
 import React from 'react';
 
 const Leaderboard = props => (
-    <div className="landing-page">
+    <div className="leaderboard">
         <h1>Leaderboard goes here</h1>
     </div>
 );

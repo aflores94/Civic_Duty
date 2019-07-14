@@ -12,7 +12,8 @@ const userSchema = new Schema({
     password: String,
     organization: String,
     subOrganization: String,
-    registeredVoter: Boolean
+    registeredVoter: Boolean,
+    zipcode: Number, 
 }, {
     timestamps: true
 });

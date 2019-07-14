@@ -1,0 +1,49 @@
+.home-page {
+  max-height: 100vh;
+  display: grid;
+  grid-template-rows: 3fr 5fr 45fr 45fr 2fr;
+  grid-template-columns: 50fr 50fr;
+  grid-template-areas: 
+  "header header"
+  "title title"
+  "leaderboard election"
+  "leaderboard representative"
+  "footer footer";
+}
+
+.navbar {
+  grid-area: header;
+  background: rgb(214, 214, 46);
+}
+
+.title {
+  grid-area: title;
+  margin: 2px;
+  padding: 4px;
+}
+
+.leaderboard {
+  grid-area: leaderboard;
+  border: 3px solid red;
+  margin: 2px;
+  padding: 4px;
+  
+}
+
+.elections {
+  grid-area: election;
+  border: 3px solid red;
+  margin: 2px;
+  padding: 4px;
+}
+
+.representatives {
+  grid-area: representative;
+  border: 3px solid red;
+  padding: 4px;
+  margin: 2px;
+}
+
+.footer {
+  grid-area: footer;
+}

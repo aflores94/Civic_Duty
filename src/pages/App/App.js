@@ -35,7 +35,6 @@ class App extends Component {
 
         />
       }/>
-      <footer className="App-footer">Copyright &copy; Andrea Flores 2019</footer>
     </div>
     );
   }

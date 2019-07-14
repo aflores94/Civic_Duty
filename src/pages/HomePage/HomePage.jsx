@@ -3,15 +3,17 @@ import React from 'react';
 import NavBar from '../../Components/NavBar/NavBar';
 import Elections from '../../Components/Elections/Elections';
 import Leaderboard from '../../Components/Leaderboard/Leaderboard';
-import CivAction from '../../Components/CivAction/CivAction';
+import Representatives from '../../Components/Representatives/Representatives';
+import "./HomePage.css";
 
 const HomePage = (props) => (
     <div className="home-page">
-        <NavBar />
-        <h1>Action Plan</h1>
-        <Leaderboard />
-        <Elections />
-        <CivAction />
+        <NavBar className="navbar"/>
+        <h1 className="title">Action Plan</h1>
+        <Leaderboard className="leaderboard"/>
+        <Elections className="elections"/>
+        <Representatives className="representatives"/>
+        <footer className="footer">Copyright &copy; Andrea Flores 2019</footer>
     </div>
 );
 

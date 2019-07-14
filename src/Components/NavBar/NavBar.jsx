@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = (props) => {
     let nav = props.user ?
-        <div>
+        <div className="navbar">
       <Link to='' className='NavBar-link'>LOG OUT</Link>
             &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
