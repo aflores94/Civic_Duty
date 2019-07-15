@@ -8,6 +8,8 @@ class SignupForm extends Component {
     state = {
         name: '',
         email: '',
+        organization: '',
+        subOrganization: '',
         password: '',
         passwordConf: ''
     };
@@ -35,18 +37,33 @@ class SignupForm extends Component {
     }
 
     isFormInvalid() {
-        return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+        return !(this.state.name && this.state.email && this.state.organization && this.state.subOrganization && this.state.password === this.state.passwordConf);
     }
 
     render() {
         return (
             <div>
                 <header className="header-footer">Sign Up</header>
-                <form autocomplete="off"className="form-horizontal" onSubmit={this.handleSubmit} >
+                <form autocomplete="off" className="form-horizontal" onSubmit={this.handleSubmit} >
                     <div className="form-group">
                         <div className="col-sm-12">
                             <input type="text" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
                         </div>
+                    </div>
+                    <div className="form-group">
+                        <select type="organization" className="form-control" value={this.state.organization} name="organization" onChange={this.handleChange}>
+                            <option value="Organization">Organization</option>
+                            <option value="General Assembly">General Assembly</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <select type="subOrganization" className="form-control" value={this.state.subOrganization} name="subOrganization" onChange={this.handleChange}>
+                            <option value="SubOrganization">SubOrganization</option>
+                            <option value="Dallas">Dallas</option>
+                            <option value="San Francisco">San Francisco</option>
+                            <option value="Austin">Austin</option>
+                            <option value="LA">LA</option>
+                        </select>
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12">
