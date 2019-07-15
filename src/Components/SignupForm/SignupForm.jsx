@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
+import './SignupForm.css';
 
 class SignupForm extends Component {
 
@@ -10,6 +11,7 @@ class SignupForm extends Component {
         email: '',
         organization: '',
         subOrganization: '',
+        registeredVoter: '',
         password: '',
         passwordConf: ''
     };
@@ -58,12 +60,16 @@ class SignupForm extends Component {
                     </div>
                     <div className="form-group">
                         <select type="subOrganization" className="form-control" value={this.state.subOrganization} name="subOrganization" onChange={this.handleChange}>
-                            <option value="SubOrganization">SubOrganization</option>
+                            <option className="dropdown" value="SubOrganization">SubOrganization</option>
                             <option value="Dallas">Dallas</option>
                             <option value="San Francisco">San Francisco</option>
                             <option value="Austin">Austin</option>
                             <option value="LA">LA</option>
                         </select>
+                    </div>
+                    <div className="form-group">
+                        <input type="checkbox" className="form-control" name="registeredVoter" value={this.state.registeredVoter} onChange={this.handleChange} />
+                        Are you a registered voter?
                     </div>
                     <div className="form-group">
                         <div className="col-sm-12">
