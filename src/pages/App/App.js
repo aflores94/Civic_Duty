@@ -17,6 +17,15 @@ class App extends Component {
       user: userService.getUser()
     };
   }
+
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+
+  handleSignupOrLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
   render() {
     return ( 
     <div className="App" >
