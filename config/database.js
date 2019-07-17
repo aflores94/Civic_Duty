@@ -1,4 +1,3 @@
-//jshint esversion:8 
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });

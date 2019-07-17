@@ -1,4 +1,3 @@
-//jshint esversion:8
 function setToken(token) {
     if (token) {
         localStorage.setItem('token', token);

@@ -1,4 +1,3 @@
-//jshint esversion:8
 import React from "react";
 import Enter from "../../Components/Enter/Enter";
 import "./LandingPage.css";

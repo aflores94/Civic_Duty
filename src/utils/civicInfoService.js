@@ -1,4 +1,3 @@
-//jshint esversion:8
 const BASE_URL = 'https://www.googleapis.com/civicinfo/v2/elections';
 
 function getAllElections() {

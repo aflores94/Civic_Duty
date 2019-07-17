@@ -1,4 +1,3 @@
-//jshint esversion:8
 import tokenService from './tokenService';
 
 const BASE_URL = '/api/users/';
@@ -13,7 +12,6 @@ function signup(user) {
         })
         .then(res => {
             if (res.ok) return res.json();
-            console.log(res.json);
             throw new Error('Email already taken!');
         })
         // Parameter destructuring!

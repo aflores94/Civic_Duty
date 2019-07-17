@@ -1,14 +1,14 @@
-//jshint esversion:8
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 module.exports = {
-    signup, 
+    signup,
     login
 };
 
 async function signup(req, res) {
+    console.log(req.body)
     const user = new User(req.body);
     try {
         await user.save();
@@ -17,6 +17,7 @@ async function signup(req, res) {
             token
         });
     } catch (err) {
+        console.log(err)
         // Probably a duplicate email
         res.status(400).json(err);
     }

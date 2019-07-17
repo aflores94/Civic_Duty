@@ -1,4 +1,3 @@
-//jshint esversion:8
 import React from 'react';
 
 const Elections = props => (

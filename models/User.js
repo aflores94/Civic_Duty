@@ -11,9 +11,6 @@ const userSchema = new Schema({
     email: {type: String, required: true, lowercase: true, unique: true},
     password: String,
     organization: String,
-    subOrganization: String,
-    registeredVoter: Boolean,
-    zipcode: Number, 
 }, {
     timestamps: true
 });

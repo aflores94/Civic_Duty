@@ -6,14 +6,13 @@
   grid-template-areas: 
   "header header"
   "title title"
-  "leaderboard election"
-  "leaderboard representative"
+  "voter-list election"
+  "voter-list representative"
   "footer footer";
 }
 
 .navbar {
   grid-area: header;
-  background: rgb(214, 214, 46);
 }
 
 .title {
@@ -22,9 +21,9 @@
   padding: 4px;
 }
 
-.leaderboard {
-  grid-area: leaderboard;
-  border: 3px solid red;
+.voters-list {
+  grid-area: voter-list;
+  border: 2px solid black;
   margin: 2px;
   padding: 4px;
   
@@ -32,14 +31,14 @@
 
 .elections {
   grid-area: election;
-  border: 3px solid red;
+  border: 2px solid black;
   margin: 2px;
   padding: 4px;
 }
 
 .representatives {
   grid-area: representative;
-  border: 3px solid red;
+  border: 2px solid black;
   padding: 4px;
   margin: 2px;
 }
