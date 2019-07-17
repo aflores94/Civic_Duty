@@ -4,21 +4,22 @@ import axios from 'axios';
 export default class EditVoter extends Component {
     constructor(props) {
         super(props);
-
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeSubOrganization = this.onChangeSubOrganization.bind(this);
-        this.onChangeRegisteredVoter = this.onChangeRegisteredVoter.bind(this);
+        
+                this.state = {
+                    name: '',
+                    subOrganization: '',
+                    registeredVoter: '',
+                }
+            
+        // this.onChangeName = this.onChangeName.bind(this);
+        // this.onChangeSubOrganization = this.onChangeSubOrganization.bind(this);
+        // this.onChangeRegisteredVoter = this.onChangeRegisteredVoter.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
-        this.state = {
-            name: '',
-            subOrganization: '',
-            registeredVoter: '',
-        }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/voters/' + this.props.match.params.id)
+        axios.get('http://localhost:3001/api/voters/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     name: response.data.name,
@@ -31,21 +32,28 @@ export default class EditVoter extends Component {
             })
     }
 
-    onChangeName(e) {
-        this.setState({
-            name: e.target.value
-        })
-    }
+    // onChangeName(e) {
+    //     this.setState({
+    //         name: e.target.value
+    //     })
+    // }
 
-    onChangeSubOrganization(e) {
-        this.setState({
-            subOrganization: e.target.value
-        })
-    }
+    // onChangeSubOrganization(e) {
+    //     this.setState({
+    //         subOrganization: e.target.value
+    //     })
+    // }
 
-    onChangeRegisteredVoter(e) {
-        this.setState({
-            registeredVoter: e.target.value
+    // onChangeRegisteredVoter(e) {
+    //     this.setState({
+    //         registeredVoter: e.target.value
+    //     })
+    // }
+
+    onInputChange = e => {
+        const { name, value } = e.target
+        this.setState = ({
+            [name]: value
         })
     }
 
@@ -60,10 +68,8 @@ export default class EditVoter extends Component {
 
         console.log(voter);
 
-        axios.post('http://localhost:5000/voters/update/' + this.props.match.params.id, voter)
+        axios.post('http://localhost:3001/api/voters/update/' + this.props.match.params.id, voter)
             .then(res => console.log(res.data));
-
-        window.location = '/home';
     }
 
     render() {
@@ -77,7 +83,7 @@ export default class EditVoter extends Component {
                             required
                             className="form-control"
                             value={this.state.name}
-                            onChange={this.onChangeName}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div className="form-group">
@@ -86,7 +92,7 @@ export default class EditVoter extends Component {
                             required
                             className="form-control"
                             value={this.state.subOrganization}
-                            onChange={this.onChangeSubOrganization}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div className="form-group">
@@ -95,7 +101,7 @@ export default class EditVoter extends Component {
                             type="text"
                             className="form-control"
                             value={this.state.registeredVoter}
-                            onChange={this.onChangeRegisteredVoter}
+                            onChange={this.onInputChange}
                         />
                     </div>
 

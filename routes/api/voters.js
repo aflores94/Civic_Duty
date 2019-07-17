@@ -2,18 +2,18 @@ const router = require('express').Router();
 let Voter = require('../../models/voters');
 
 router.route('/home').get((req, res) => {
-    Voter.find()
+    Voter.find({})
         .then(voters => res.json(voters))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.route('/create').post((req, res) => {
     const name = req.body.name;
     const subOrganization = req.body.subOrganization;
     const registeredVoter = Number(req.body.registeredVoter);
 
     const newVoter = new Voter({
-        name, 
+        name,
         subOrganization,
         registeredVoter,
     });
@@ -29,7 +29,7 @@ router.route('/:id').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').delete((req, res) => {
+router.route('/delete/:id').delete((req, res) => {
     Voter.findByIdAndDelete(req.params.id)
         .then(() => res.json('Voter deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));

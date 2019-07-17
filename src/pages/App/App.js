@@ -1,6 +1,10 @@
-import React, {Component} from 'react';
+import React, {
+  Component
+} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {
+  Route
+} from "react-router-dom";
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
 import HomePage from '../HomePage/HomePage';
@@ -17,29 +21,59 @@ class App extends Component {
       user: userService.getUser()
     };
   }
-  
+
   handleLogout = () => {
     userService.logout();
-    this.setState({ user: null });
+    this.setState({
+      user: null
+    });
   };
 
   handleSignupOrLogin = () => {
-    this.setState({ user: userService.getUser()});
+    this.setState({
+      user: userService.getUser()
+    });
   };
 
 
   render() {
     return ( 
-    <div className="App" >
-        <Route exact path = '/home' render = {() => <HomePage />}/>
-        <Route exact path = '/' render = {() => <LandingPage />}/>
-        <Route exact path = '/signup' render = {({ history }) => 
-          <SignupPage history={history} handleSignupOrLogin={this.handleSignupOrLogin}/>
-        }/>
-        <Route exact path = '/login' render = {() => <LoginPage />}/>
-      <Route path = "/edit/:id" component = {EditVoter} /> 
-      <Route path = "/create" component = {CreateVoter} /> 
-    </div>
+      <div className = "App" >
+      <Route exact path = '/home'
+      render = {
+        () =>
+        <HomePage user = {this.state.user}
+        />
+      }
+      /> <Route exact path = '/'
+      render = {
+        () => < LandingPage / >
+      }
+      /> <Route exact path = '/signup'
+      render = {({history}) =>
+        <SignupPage
+        history = {history}
+        handleSignupOrLogin = {this.handleSignupOrLogin}
+        />
+      }
+      />  <Route exact path = '/login'
+      render = {
+        ({
+          history
+        }) =>
+        <LoginPage
+        history = {history}
+        handleSignupOrLogin = {this.handleSignupOrLogin}
+        />
+      }
+      /> 
+      <Route path = "/edit/:id"
+      component = {EditVoter}
+      />  
+      <Route path = "/create"
+      component = {CreateVoter}
+      />  
+      </div>
     );
   }
 }
