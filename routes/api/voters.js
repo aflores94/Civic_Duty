@@ -1,25 +1,28 @@
 const router = require('express').Router();
 let Voter = require('../../models/voters');
 
-router.route('/home').get((req, res) => {
+router.route('/').get((req, res) => {
     Voter.find({})
-        .then(voters => res.json(voters))
+        .then(voters => {
+            console.log('voters', voters)
+            res.json(voters)
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/create').post((req, res) => {
+router.route('/add').post((req, res) => {
     const name = req.body.name;
     const subOrganization = req.body.subOrganization;
-    const registeredVoter = Number(req.body.registeredVoter);
+    const registeredVoter = Date.parse(req.body.registeredVoter);
 
-    const newVoter = new Voter({
+    const newTrip = new Trip({
         name,
         subOrganization,
         registeredVoter,
     });
 
     newVoter.save()
-        .then(() => res.json('Voter added!'))
+        .then(() => res.json('New Voter added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -29,7 +32,7 @@ router.route('/:id').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/delete/:id').delete((req, res) => {
+router.route('/:id').delete((req, res) => {
     Voter.findByIdAndDelete(req.params.id)
         .then(() => res.json('Voter deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
@@ -40,10 +43,10 @@ router.route('/update/:id').post((req, res) => {
         .then(voter => {
             voter.name = req.body.name;
             voter.subOrganization = req.body.subOrganization;
-            voter.registeredVoter = req.body.registeredVoter;
+            voter.registeredVoter = Date.parse(req.body.registeredVoter);
 
             voter.save()
-                .then(() => res.json('Voter updated!'))
+                .then(() => res.json('voter updated!'))
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));
