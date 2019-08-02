@@ -5,50 +5,19 @@ export default class CreateVoter extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeSubOrganization = this.onChangeSubOrganization.bind(this);
-    this.onChangeRegisteredVoter = this.onChangeRegisteredVoter.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       name: "",
       subOrganization: "",
-      registeredVoter: ""
+      registeredVoter: "",
     };
   }
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:3001/users/")
-      .then(response => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.name),
-            name: response.data[0].name
-          });
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
 
-  onChangeName(e) {
-    this.setState({
-      name: e.target.value
-    });
-  }
-
-  onChangeSubOrganization(e) {
-    this.setState({
-      subOrganization: e.target.value
-    });
-  }
-
-  onChangeRegisteredVoter(e) {
-    this.setState({
-      registeredVoter: e.target.value
-    });
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   onSubmit(e) {
@@ -58,14 +27,15 @@ export default class CreateVoter extends Component {
       name: this.state.name,
       subOrganization: this.state.subOrganization,
       registeredVoter: this.state.registeredVoter
-    };
+    }
 
     console.log(voter);
 
-    axios
-      .post("http://localhost:3001/api/voters/create", voter)
-      .then(res => console.log(res.data));
+    axios.post('http://localhost:3001/voters/add', voter)
+      .then(res => console.log(res.data))
+      .then(() => this.props.history.push('/home'));
   }
+
 
   render() {
     return (
@@ -75,30 +45,33 @@ export default class CreateVoter extends Component {
           <div className="form-group">
             <label>Name: </label>
             <input
+              name='name'
               type="text"
               required
               className="form-control"
               value={this.state.name}
-              onChange={this.onChangeName}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
             <label>SubOrganization: </label>
             <input
+              name='subOrganization'
               type="text"
               required
               className="form-control"
               value={this.state.subOrganization}
-              onChange={this.onChangeSubOrganization}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
             <label>RegisteredVoter: </label>
             <input
+              name="registeredVoter"
               type="text"
               className="form-control"
               value={this.state.registeredVoter}
-              onChange={this.onChangeRegisteredVoter}
+              onChange={this.handleChange}
             />
           </div>
 

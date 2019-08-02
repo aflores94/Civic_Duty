@@ -4,7 +4,7 @@ import "./Representatives.css";
 const Representatives = props => (
     <div className="representatives">
         <h1>Your Elected Officials</h1>
-        <input type="text" placeholder="Enter your zipcode here"/>
+        <input type="text" placeholder="COMING SOON"/>
     </div>
 );
 

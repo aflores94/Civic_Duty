@@ -3,7 +3,9 @@ import React, {
 } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-  Route
+  Route,
+  Switch,
+  BrowserRouter as Router
 } from "react-router-dom";
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
@@ -18,8 +20,23 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser()
+      user: userService.getUser(),
+      votersList: [],
+      voterId: ''
     };
+  }
+
+  getVoterId = (voterId) => {
+    this.setState({
+      voterId
+    })
+  }
+
+  getUpdatedVoter = (voter) => {
+    const newList = [...this.state.votersList, voter]
+    this.setState({
+      votersList: newList
+    })
   }
 
   handleLogout = () => {
@@ -37,43 +54,79 @@ class App extends Component {
 
 
   render() {
-    return ( 
-      <div className = "App" >
-      <Route exact path = '/home'
-      render = {
-        () =>
-        <HomePage user = {this.state.user}
-        />
+    return ( < div className = "App" >
+      <
+      Router >
+      <
+      Switch >
+      <
+      Route exact path = '/home' >
+      <
+      div >
+      <
+      HomePage user = {
+        this.state.user
       }
-      /> <Route exact path = '/'
+      />   <
+      /div>  <
+      /Route>   <
+      Route exact path = '/'
       render = {
         () => < LandingPage / >
       }
-      /> <Route exact path = '/signup'
-      render = {({history}) =>
-        <SignupPage
-        history = {history}
-        handleSignupOrLogin = {this.handleSignupOrLogin}
-        />
-      }
-      />  <Route exact path = '/login'
+      />   <
+      Route exact path = '/signup'
       render = {
         ({
           history
         }) =>
-        <LoginPage
-        history = {history}
-        handleSignupOrLogin = {this.handleSignupOrLogin}
+        <
+        SignupPage history = {
+          history
+        }
+        handleSignupOrLogin = {
+          this.handleSignupOrLogin
+        }
         />
       }
-      /> 
-      <Route path = "/edit/:id"
-      component = {EditVoter}
-      />  
-      <Route path = "/create"
-      component = {CreateVoter}
-      />  
-      </div>
+      />    <
+      Route exact path = '/login'
+      render = {
+        ({
+          history
+        }) =>
+        <
+        LoginPage history = {
+          history
+        }
+        handleSignupOrLogin = {
+          this.handleSignupOrLogin
+        }
+        />
+      }
+      />   <
+      Route path = "/edit/:id"
+      render = {
+        (props) =>
+        <
+        EditVoter {
+          ...props
+        }
+        getUpdatedVoter = {
+          this.getUpdatedVoter
+        }
+        />
+      } >
+      <
+      /Route>  <
+      Route path = "/create"
+      component = {
+        CreateVoter
+      }
+      />    <
+      /Switch>  <
+      /Router>  <
+      /div>
     );
   }
 }

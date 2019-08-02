@@ -13,9 +13,9 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const name = req.body.name;
     const subOrganization = req.body.subOrganization;
-    const registeredVoter = Date.parse(req.body.registeredVoter);
+    const registeredVoter = req.body.registeredVoter;
 
-    const newTrip = new Trip({
+    const newVoter = new Voter({
         name,
         subOrganization,
         registeredVoter,
@@ -29,7 +29,10 @@ router.route('/add').post((req, res) => {
 router.route('/:id').get((req, res) => {
     Voter.findById(req.params.id)
         .then(voter => res.json(voter))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => {
+            console.log(err)
+            res.status(400).json('Error: ' + err)
+        });
 });
 
 router.route('/:id').delete((req, res) => {
@@ -43,7 +46,7 @@ router.route('/update/:id').post((req, res) => {
         .then(voter => {
             voter.name = req.body.name;
             voter.subOrganization = req.body.subOrganization;
-            voter.registeredVoter = Date.parse(req.body.registeredVoter);
+            voter.registeredVoter = req.body.registeredVoter;
 
             voter.save()
                 .then(() => res.json('voter updated!'))

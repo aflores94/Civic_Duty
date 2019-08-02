@@ -12,7 +12,7 @@ const voterSchema = new Schema({
         required: true
     },
     registeredVoter: {
-        type: Boolean,
+        type: String,
         required: true
     },
 }, {
