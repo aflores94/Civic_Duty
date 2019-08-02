@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./VotersList.css";
 
 const Voter = props => {
   console.log('props', props)
@@ -16,7 +17,7 @@ const Voter = props => {
         >
           edit |
         </Link>
-        <span
+        <span 
           onClick={() => { props.deleteVoter(props.voter._id); }}
         >
           &nbsp; delete

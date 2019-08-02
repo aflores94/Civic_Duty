@@ -1,0 +1,9 @@
+span {
+    color: rgba(70, 152, 247, 1);
+    cursor: pointer;
+    
+}
+
+a:hover {
+    text-decoration: none;
+}
