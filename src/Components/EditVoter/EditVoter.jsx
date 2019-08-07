@@ -16,7 +16,7 @@ export default class EditVoter extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:3001/voters/' + this.props.match.params.id)
+        await axios.get('https://civicdutyapp.herokuapp.com/voters/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     name: response.data.name,
@@ -28,7 +28,7 @@ export default class EditVoter extends Component {
                 console.log(error);
             })
 
-        axios.get('http://localhost:3001/users/')
+        axios.get('https://civicdutyapp.herokuapp.com/users/')
             .then(response => {
                 if (response.data.length > 0) {
                     this.setState({
@@ -56,7 +56,7 @@ export default class EditVoter extends Component {
             registeredVoter: this.state.registeredVoter,
         }
 
-        axios.post('http://localhost:3001/voters/update/' + this.props.match.params.id, voter)
+        axios.post('https://civicdutyapp.herokuapp.com/voters/update/' + this.props.match.params.id, voter)
             .then(res => this.props.getUpdatedVoter(res.data))
             .then(() => this.props.history.push('/home'));
     }

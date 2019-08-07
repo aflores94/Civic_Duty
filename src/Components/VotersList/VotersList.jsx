@@ -39,7 +39,7 @@ export default class VotersList extends Component {
 
   componentDidMount() {
     console.log('mounted')
-    axios.get('http://localhost:3001/voters/')
+    axios.get('https://civicdutyapp.herokuapp.com/voters/')
       .then(response => {
           console.log(response)
         this.setState({ voters: response.data })
@@ -54,7 +54,7 @@ export default class VotersList extends Component {
   }
 
   deleteVoter(id) {
-    axios.delete('http://localhost:3001/voters/' + id)
+    axios.delete('https://civicdutyapp.herokuapp.com/voters/' + id)
       .then(response => { console.log(response.data) });
 
     this.setState({
