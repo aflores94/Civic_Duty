@@ -31,7 +31,7 @@ export default class CreateVoter extends Component {
 
     console.log(voter);
 
-    axios.post('https://civicdutyapp.herokuapp.com//voters/add', voter)
+    axios.post('https://civicdutyapp.herokuapp.com/voters/add', voter)
       .then(res => console.log(res.data))
       .then(() => this.props.history.push('/home'));
   }
